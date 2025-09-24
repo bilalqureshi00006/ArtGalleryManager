@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Artworks</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>Artworks</h1>
+
+  <div th:if="${message}">
+    <p th:text="${message}"></p>
+  </div>
+  <a href="/artists" class="btn">Back to Artists</a>
+  <br/><br/>
+
+  <a href="/artworks/new">New artwork</a>
+
+  <table id="artwork_table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Medium</th>
+        <th>Year</th>
+        <th>Artist</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="a : ${artworks}">
+        <td th:text="${a.id}">1</td>
+        <td th:text="${a.title}">Title</td>
+        <td th:text="${a.medium}">Medium</td>
+        <td th:text="${a.yearCreated}">2025</td>
+        <td th:text="${a.artist != null ? a.artist.name : 'No artist'}">Artist</td>
+        <td><a th:href="@{/artworks/edit/{id}(id=${a.id})}">Edit</a></td>
+        <td><a th:href="@{/artworks/delete/{id}(id=${a.id})}">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

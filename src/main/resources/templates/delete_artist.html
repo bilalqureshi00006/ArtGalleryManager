@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Artist Deleted</title>
+	<link rel="stylesheet" href="/delete.css" />
+</head>
+<body>
+	<div class="container">
+		<h1 th:text="'Artist with ID ' + ${deletedId} + ' was deleted.'">Artist Deleted</h1>
+
+		<div class="button-group">
+			<form th:action="@{/artists/new}" method="get">
+				<button type="submit" name="btn_new_artist" class="btn primary">New Artist</button>
+			</form>
+
+			<form th:action="@{/artists}" method="get">
+				<button type="submit" name="btn_all_artists" class="btn secondary">All Artists</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

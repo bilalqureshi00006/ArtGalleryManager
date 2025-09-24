@@ -1,0 +1,11 @@
+services:
+  mysql-artgallery:
+    image: mysql:8.0
+    container_name: mysql-artgallery
+    environment:
+      MYSQL_DATABASE: artgallery
+      MYSQL_USER: art
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "3307:3306"
