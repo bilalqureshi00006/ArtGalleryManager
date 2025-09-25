@@ -40,9 +40,9 @@ jobs:
       -  name: SonarCloud
          run: >
             mvn sonar:sonar 
-            -Dsonar.organization=bilalayazqureshi 
+            -Dsonar.organization=bilalqureshi00006
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.projectKey=bilalayazqureshi_ArtGalleryManager
+            -Dsonar.projectKey=bilalqureshi00006_ArtGalleryManager
          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
