@@ -27,6 +27,9 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
         restore-keys: ${{ runner.os }}-m2-
 
+    - name: Clean the Maven build
+      run: mvn clean
+
     - name: Unit and Integration Tests
       run: mvn verify -Pjacoco
 
@@ -35,14 +38,12 @@ jobs:
       env:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
 
-    # Remove the old Coveralls Maven plugin and add the Coveralls GitHub Action
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v2.3.6
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         coveralls_token: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
-    # SonarCloud Analysis
     - name: SonarCloud Analysis
       run: >
         mvn sonar:sonar 
